@@ -18,7 +18,7 @@ class ArticleController
 
     public function index(array $vars = []): Response
     {
-        $id = isset($vars['id']) ? (int)$vars['id'] : 0;
+        $id = $vars['id'] ?? 0;
         switch ($id) {
             case 1:
                 $response = $this->topHeadlines();
@@ -62,7 +62,7 @@ class ArticleController
             $page
         );
 
-        return new Response('article/index', [
+        return new Response('Article/index', [
             'articles' => $articles->getArticles()
         ]);
     }
@@ -85,7 +85,7 @@ class ArticleController
             $page
         );
 
-        return new Response('article/index', [
+        return new Response('Article/index', [
             'articles' => $articles->getArticles()
         ]);
     }
